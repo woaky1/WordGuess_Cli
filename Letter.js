@@ -1,7 +1,6 @@
-function Letter(trueLetter,guessed,userGuess){
+function Letter(trueLetter,guessed){
     this.trueLetter = trueLetter;
     this.guessed = guessed;
-    this.userLetter = userGuess;
     this.display = function() {
         if (this.guessed === true) {
             return this.trueLetter;
@@ -9,15 +8,13 @@ function Letter(trueLetter,guessed,userGuess){
             return "_";
         };
     };
-    // this.check = function(userGuess){
-    //     if (this.trueLetter === this.userLetter) {
-    //         this.guessed = true;
-    //     } else {
-    //         this.guessed = false;
-    //     }
-    // };
+    this.check = function(userGuess){
+        if (this.trueLetter === userGuess) {
+            this.guessed = true;
+        } else {
+            this.guessed = false;
+        }
+    };
 }
 
-var a = new Letter("a",true,"b");
-console.log(a.display());
 module.exports = Letter;
