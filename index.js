@@ -4,19 +4,16 @@ inquirer = require("inquirer");
 var mysteryWords = ["chicken","dog","ennui"];
 var guessedWords = [];
 var mysteryWord;
+var askAgain;
 
 function game() {
-    if (guessedWords.length !== mysteryWords.length) {
-        wordPicker();
-        thisRoundsWord = new Word(mysteryWord);
-        console.log(thisRoundsWord);
-        thisRoundsWord.letterfy();
-        guesser()
-
-    } else {
-        console.log("You've guessed all the words. Nice work!");
-    }
-
+    wordPicker();
+    thisRoundsWord = new Word(mysteryWord);
+    console.log(thisRoundsWord);
+    thisRoundsWord.letterfy();
+    console.log(thisRoundsWord);
+    thisRoundsWord.project();
+    guesser();
 }
 
 function wordPicker() {
@@ -25,8 +22,10 @@ function wordPicker() {
             wordPicker();
         } else {
             mysteryWord = potentialMysteryWord;
+            guessedWords.push(mysteryWord);
         }
 }
+
 
 function guesser(){
     inquirer
@@ -40,9 +39,22 @@ function guesser(){
         .then(function(response){
             thisRoundsWord.wordCheck(response.userGuess);
             thisRoundsWord.project();
+            for (var i = 0; i < thisRoundsWord.letters.length; i++)
+                if (thisRoundsWord.letters[i].guessed === false) {
+                    askAgain = true;
+                } else {
+                    askAgain = false;
+                }
+            if (askAgain === true) {
+                guesser();
+            } else if ((askAgain === false) && (guessedWords.length !== mysteryWords.length)) {
+                    console.log("Nice job. Let's try another word.")
+                    game();
+                } else {
+                    console.log("You've guessed all the words. Nice work!");
+                }
+
         });
-    if (thisRoundsWord.project().indexOf("_" > - 1)) {
-        guesser();
-    }
 }
+
 game();
