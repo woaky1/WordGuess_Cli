@@ -20,9 +20,11 @@ function Word(string) {
         }
         var displayString = displayArray.toString().replace(/,/g," ");
         console.log(displayString);
+        return displayString;
         
     }
     this.wordCheck = function (userGuess) {
+        // console.log("Yep, you made it into wordCheck.");
         for (var k = 0; k < this.letters.length; k++) {
             this.letters[k].check(userGuess);
         }
@@ -31,10 +33,10 @@ function Word(string) {
 
 module.exports = Word;
 
-// chicken = new Word("chicken");
-// chicken.letterfy();
-// chicken.project();
-// chicken.wordCheck("c");
-// chicken.project();
-// chicken.wordCheck("h");
-// chicken.project();
+chicken = new Word("chicken");
+chicken.letterfy();
+chicken.project();
+chicken.wordCheck("c");
+chicken.project();
+chicken.wordCheck("n");
+chicken.project();
