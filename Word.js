@@ -21,13 +21,11 @@ function Word(string) {
         console.log("Here's displayString: " + displayString);
         
     }
+    this.wordCheck = function (userGuess) {
+        for (var k = 0; k < this.letters.length; k++) {
+            this.letters[k].check(userGuess);
+        }
+    }
 }
-
-chicken = new Word("chicken");
-// console.log(chicken);
-chicken.letterfy();
-// console.log(chicken);
-chicken.project();
-// console.log(chicken.letters[0].trueLetter);
 
 module.exports = Word;
