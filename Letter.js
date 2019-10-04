@@ -1,6 +1,6 @@
-function Letter(trueLetter,guessed){
+function Letter(trueLetter){
     this.trueLetter = trueLetter;
-    this.guessed = guessed;
+    this.guessed = false;
     this.display = function() {
         if (this.guessed === true) {
             return this.trueLetter;
@@ -9,7 +9,9 @@ function Letter(trueLetter,guessed){
         };
     };
     this.check = function(userGuess){
-        if (this.trueLetter === userGuess) {
+        if (this.guessed === true) {
+
+        } else if (this.trueLetter === userGuess) {
             this.guessed = true;
         } else {
             this.guessed = false;
@@ -18,3 +20,10 @@ function Letter(trueLetter,guessed){
 }
 
 module.exports = Letter;
+
+// a = new Letter("a");
+// console.log(a.guessed);
+// console.log(a.display());
+// a.guessed = true;
+// console.log(a.guessed);
+// console.log(a.display());
