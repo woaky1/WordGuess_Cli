@@ -20,9 +20,11 @@ function Word(string) {
         }
         var displayString = displayArray.toString().replace(/,/g," ");
         console.log(displayString);
+        return displayString;
         
     }
     this.wordCheck = function (userGuess) {
+        // console.log("Yep, you made it into wordCheck.");
         for (var k = 0; k < this.letters.length; k++) {
             this.letters[k].check(userGuess);
         }
