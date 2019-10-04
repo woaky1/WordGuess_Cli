@@ -10,6 +10,8 @@ function game() {
         wordPicker();
         thisRoundsWord = new Word(mysteryWord);
         console.log(thisRoundsWord);
+        thisRoundsWord.letterfy();
+        guesser()
 
     } else {
         console.log("You've guessed all the words. Nice work!");
@@ -24,7 +26,23 @@ function wordPicker() {
         } else {
             mysteryWord = potentialMysteryWord;
         }
-
 }
 
+function guesser(){
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                message: "Guess a letter!",
+                name: "userGuess"
+            }
+        ])
+        .then(function(response){
+            thisRoundsWord.wordCheck(response.userGuess);
+            thisRoundsWord.project();
+        });
+    if (thisRoundsWord.project().indexOf("_" > - 1)) {
+        guesser();
+    }
+}
 game();

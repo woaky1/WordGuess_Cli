@@ -4,6 +4,7 @@ function Word(string) {
     this.string = string;
     this.letters = [];
     this.letterfy = function(){
+        console.log("Almost in letterFeed: " + JSON.stringify(this, null, 2));
         var letterFeed = this.string.split("");
         for (var i = 0; i < letterFeed.length; i++) {
             this.letters.push(letter = new Letter(letterFeed[i]))
@@ -18,7 +19,7 @@ function Word(string) {
             
         }
         var displayString = displayArray.toString().replace(/,/g," ");
-        console.log("Here's displayString: " + displayString);
+        console.log(displayString);
         
     }
     this.wordCheck = function (userGuess) {
