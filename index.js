@@ -56,6 +56,7 @@ function guesser(){
             for (var i = 0; i < thisRoundsWord.letters.length; i++)
                 if ((thisRoundsWord.letters[i].guessed === false) && (numGuesses != 0)) {
                     askAgain = true;
+                    i = thisRoundsWord.letters.length;
                 } else {
                     askAgain = false;
                 }

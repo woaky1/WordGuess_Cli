@@ -33,10 +33,10 @@ function Word(string) {
 
 module.exports = Word;
 
-// chicken = new Word("chicken");
-// chicken.letterfy();
-// chicken.project();
-// chicken.wordCheck("c");
-// chicken.project();
-// chicken.wordCheck("h");
-// chicken.project();
+chicken = new Word("chicken");
+chicken.letterfy();
+chicken.project();
+chicken.wordCheck("c");
+chicken.project();
+chicken.wordCheck("n");
+chicken.project();
