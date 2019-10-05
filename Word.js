@@ -4,7 +4,6 @@ function Word(string) {
     this.string = string;
     this.letters = [];
     this.letterfy = function(){
-        console.log("Almost in letterFeed: " + JSON.stringify(this, null, 2));
         var letterFeed = this.string.split("");
         for (var i = 0; i < letterFeed.length; i++) {
             this.letters.push(letter = new Letter(letterFeed[i]))
@@ -15,7 +14,6 @@ function Word(string) {
         var letterDisplayArray = this.letters
         for (var j = 0; j < letterDisplayArray.length; j++) {
             displayArray.push(letterDisplayArray[j].display());
-            // console.log(displayArray);
             
         }
         var displayString = displayArray.toString().replace(/,/g," ");
@@ -24,7 +22,6 @@ function Word(string) {
         
     }
     this.wordCheck = function (userGuess) {
-        // console.log("Yep, you made it into wordCheck.");
         for (var k = 0; k < this.letters.length; k++) {
             this.letters[k].check(userGuess);
         }
@@ -32,11 +29,3 @@ function Word(string) {
 }
 
 module.exports = Word;
-
-chicken = new Word("chicken");
-chicken.letterfy();
-chicken.project();
-chicken.wordCheck("c");
-chicken.project();
-chicken.wordCheck("n");
-chicken.project();

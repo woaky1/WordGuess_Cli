@@ -12,12 +12,9 @@ var victories = 0;
 
 function game() {
     numGuesses = 10;
-    console.log(numGuesses);
     wordPicker();
     thisRoundsWord = new Word(mysteryWord);
-    console.log(thisRoundsWord);
     thisRoundsWord.letterfy();
-    console.log(thisRoundsWord);
     pastState = thisRoundsWord.project();
     guesser();
 }
@@ -39,11 +36,17 @@ function guesser(){
             {
                 type: "input",
                 message: "Guess a letter!",
-                name: "userGuess"
+                name: "userGuess",
+                validate: function(value) {
+                    var pass = (value.length === 1);
+                    if (pass) {
+                        return true;
+                    }
+                    return "Please type ONE letter.";
+                }
             }
         ])
         .then(function(response){
-            console.log("Past State: " + pastState)
             thisRoundsWord.wordCheck(response.userGuess);
             currentState = thisRoundsWord.project();
             if (currentState === pastState) {
