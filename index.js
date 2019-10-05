@@ -1,6 +1,9 @@
+// We'll need the Word constructor to create the objects we'll need to play the game.
+// The inquire npm package is how we get the user's input.
 Word = require("./Word.js");
 inquirer = require("inquirer");
 
+// Establishing a bunch of global variables, including the words the user will be trying to guess.
 var mysteryWords = ["chicken","dog","ennui"];
 var guessedWords = [];
 var mysteryWord;
@@ -10,7 +13,9 @@ var currentState;
 var numGuesses;
 var victories = 0;
 
+// This is the core function of the game.
 function game() {
+    // Here we establish the base number of guesses the player has.
     numGuesses = 10;
     wordPicker();
     thisRoundsWord = new Word(mysteryWord);
@@ -19,6 +24,7 @@ function game() {
     guesser();
 }
 
+//This fuction selects one of the possible mystery words at random.
 function wordPicker() {
     potentialMysteryWord = mysteryWords[Math.floor(Math.random() * 3)]
         if (guessedWords.includes(potentialMysteryWord)) {
@@ -29,7 +35,7 @@ function wordPicker() {
         }
 }
 
-
+// In this fuction, the player makes their guess, we check that guess, and we determine what should happen next (Let the user guess again? Pick a new word? Game over?)
 function guesser(){
     inquirer
         .prompt([
@@ -85,5 +91,5 @@ function guesser(){
 
         });
 }
-
+// Need to call the game function to get the game to start!
 game();
