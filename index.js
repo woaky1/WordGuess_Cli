@@ -57,7 +57,7 @@ function guesser(){
             currentState = thisRoundsWord.project();
             if (currentState === pastState) {
                 numGuesses--
-                console.log("Nope. You have " + numGuesses + " left.")
+                console.log("Nope. You have " + numGuesses + " guesses left.")
                 pastState = currentState;
             } else {
                 pastState = currentState;
