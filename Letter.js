@@ -20,10 +20,3 @@ function Letter(trueLetter){
 }
 
 module.exports = Letter;
-
-// a = new Letter("a");
-// console.log(a.guessed);
-// console.log(a.display());
-// a.guessed = true;
-// console.log(a.guessed);
-// console.log(a.display());
